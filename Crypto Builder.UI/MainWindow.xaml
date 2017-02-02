@@ -1,4 +1,4 @@
-﻿<Window x:Class="CryptoBuilder.UI.MainWindow"
+﻿<MahApps:MetroWindow x:Class="CryptoBuilder.UI.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -6,10 +6,15 @@
         xmlns:local="clr-namespace:CryptoBuilder.UI"
         xmlns:xcad="http://schemas.xceed.com/wpf/xaml/avalondock"
         xmlns:fa="http://schemas.fontawesome.io/icons/"
+        xmlns:MahApps="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         xmlns:v="clr-namespace:CryptoBuilder.UI.View"
         xmlns:vm="clr-namespace:CryptoBuilder.UI.ViewModel"
         mc:Ignorable="d"
-        Title="MainWindow" WindowStartupLocation="CenterScreen" WindowState="Maximized">
+        BorderThickness="1" 
+        GlowBrush="{DynamicResource AccentColorBrush}"
+        ResizeMode="CanResizeWithGrip"
+        WindowTransitionsEnabled="False"
+        Title="Crypto Builder" WindowStartupLocation="CenterScreen" WindowState="Maximized">
     <Window.InputBindings>
         <KeyBinding Key="N" Modifiers="Ctrl" Command="{Binding Path=NewProject}"/>
         <KeyBinding Key="R" Modifiers="Ctrl" Command="{Binding Path=RunProject}"/>
@@ -100,4 +105,4 @@
             </xcad:LayoutRoot>
         </xcad:DockingManager>
     </Grid>
-</Window>
+</MahApps:MetroWindow>
