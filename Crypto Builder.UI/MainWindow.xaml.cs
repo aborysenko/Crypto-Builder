@@ -28,5 +28,17 @@ namespace CryptoBuilder.UI
 
             DataContext = App.DockManagerViewModel;
         }
+
+        private void layoutAnchorableAlgorithm_Hiding(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            bool flag = layoutAnchorableAlgorithm.IsActive;
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            bool flag = layoutAnchorableAlgorithm.IsActive;
+
+            layoutAnchorableAlgorithm.Show();
+        }
     }
 }
