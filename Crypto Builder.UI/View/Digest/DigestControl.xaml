@@ -6,20 +6,29 @@
              xmlns:view="clr-namespace:CryptoBuilder.UI.View"
              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              xmlns:b="clr-namespace:CryptoBuilder.UI.Behavior"
-             mc:Ignorable="d" Background="LightBlue" Cursor="Hand">
+             mc:Ignorable="d" 
+             Cursor="Hand">
     <i:Interaction.Behaviors>
         <b:DragInCanvasBehavior />
     </i:Interaction.Behaviors>
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <Label HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold" Content="{Binding Path=AlgorithmName}" Foreground="#FF872222"/>
-        <TextBox Grid.Row="1" Width="200" TextWrapping="Wrap" AcceptsReturn="True" x:Name="txtInput">
-            <!--<i:Interaction.Behaviors>
+    <Border  Background="{StaticResource AccentColorBrush}"
+             BorderBrush="{StaticResource AccentColorBrush}"
+             BorderThickness="2"
+             CornerRadius="8,8,0,0">
+        <Border.Effect>
+            <DropShadowEffect Color="Gray" Opacity="0.5"/>
+        </Border.Effect>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Label HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold" Content="{Binding Path=AlgorithmName}" Foreground="White"/>
+            <TextBox Grid.Row="1" Width="200" TextWrapping="Wrap" AcceptsReturn="True" x:Name="txtInput">
+                <!--<i:Interaction.Behaviors>
                 <b:PropertyChangedCommandBehavior DependencyPropertyName="Text" PropertyChangedCommand="{Binding MessageChanged}" />
             </i:Interaction.Behaviors>-->
-        </TextBox>
-    </Grid>
+            </TextBox>
+        </Grid>
+    </Border>
 </UserControl>

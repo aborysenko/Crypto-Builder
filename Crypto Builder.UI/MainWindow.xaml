@@ -56,7 +56,16 @@
                 </MenuItem>
             </MenuItem>
             <MenuItem Header="Вид">
-                <MenuItem Header="Панель алгоритмов"/>
+                <MenuItem Header="Панель алгоритмов" Command="{Binding Path=PanelAlgorithm}">
+                    <MenuItem.Icon>
+                        <fa:FontAwesome Icon="ShoppingBag" Style="{StaticResource ResourceKey=MenuItemFontAwesomeStyle}"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Вывод результатов" Command="{Binding Path=PanelOutput}">
+                    <MenuItem.Icon>
+                        <fa:FontAwesome Icon="SignOut" Style="{StaticResource ResourceKey=MenuItemFontAwesomeStyle}"/>
+                    </MenuItem.Icon>
+                </MenuItem>
             </MenuItem>
         </Menu>
         <ToolBar Grid.Row="1">
@@ -67,7 +76,7 @@
                 </StackPanel>
             </Button>
         </ToolBar>
-        <xcad:DockingManager x:Name="ddd" Grid.Row="2" AllowMixedOrientation="True" DataContext="{Binding Source={x:Static local:App.DockManagerViewModel}}" DocumentsSource="{Binding Documents}" ActiveContent="{Binding ActiveDockWindow, Mode=TwoWay}">
+        <xcad:DockingManager Grid.Row="2" AllowMixedOrientation="True" DataContext="{Binding Source={x:Static local:App.DockManagerViewModel}}" DocumentsSource="{Binding Documents}" ActiveContent="{Binding ActiveDockWindow, Mode=TwoWay}">
             <xcad:DockingManager.Theme>
                 <xcad:MetroTheme/>
             </xcad:DockingManager.Theme>
@@ -87,7 +96,7 @@
                 <xcad:LayoutRoot.LeftSide>
                     <xcad:LayoutAnchorSide>
                         <xcad:LayoutAnchorGroup>
-                            <xcad:LayoutAnchorable x:Name="layoutAnchorableAlgorithm" Title="Панель алгоритмов" CanClose="False" CanHide="True">
+                            <xcad:LayoutAnchorable x:Name="layoutAnchorableAlgorithm" Title="Панель алгоритмов" AutoHideMinWidth="200" AutoHideMinHeight="200" CanClose="False" CanHide="True">
                                 <v:AlgorithmPanelControl/>
                             </xcad:LayoutAnchorable>
                         </xcad:LayoutAnchorGroup>
@@ -96,7 +105,7 @@
                 <xcad:LayoutRoot.BottomSide>
                     <xcad:LayoutAnchorSide>
                         <xcad:LayoutAnchorGroup>
-                            <xcad:LayoutAnchorable x:Name="layoutAnchorableOutput" Title="Вывод результатов" CanClose="False" CanHide="True">
+                            <xcad:LayoutAnchorable x:Name="layoutAnchorableOutput" Title="Вывод результатов" AutoHideMinWidth="200" AutoHideMinHeight="200" CanClose="False" CanHide="True" >
                                 <v:OutputControl DataContext="{Binding ActiveDockWindow}"/>
                             </xcad:LayoutAnchorable>
                         </xcad:LayoutAnchorGroup>

@@ -22,11 +22,20 @@ namespace CryptoBuilder.UI
     /// </summary>
     public partial class MainWindow : MetroWindow
     {
+        public DocumentManagerViewModel ViewModel
+        {
+            get { return DataContext as DocumentManagerViewModel; }
+        }
+
         public MainWindow()
         {
             InitializeComponent();
 
             DataContext = App.DockManagerViewModel;
+
+            ViewModel.LayoutAnchorableAlgorithm = layoutAnchorableAlgorithm;
+
+            ViewModel.LayoutAnchorableOutput = layoutAnchorableOutput;
         }
     }
 }

@@ -11,25 +11,33 @@
     <i:Interaction.Behaviors>
         <b:DragInCanvasBehavior />
     </i:Interaction.Behaviors>
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <Label HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold" Content="{Binding Path=AlgorithmName}" Foreground="#FF872222"/>
-        <DockPanel Grid.Row="1" Margin="3" LastChildFill="True">
-            <TextBlock Text="Размер блока: " VerticalAlignment="Center"/>
-            <ComboBox IsReadOnly="True" SelectedIndex="1" x:Name="cmbSize">
-                <ComboBoxItem>256</ComboBoxItem>
-                <ComboBoxItem>512</ComboBoxItem>
-                <ComboBoxItem>1024</ComboBoxItem>
-            </ComboBox>
-        </DockPanel>
-        <TextBox Grid.Row="2" Width="200" TextWrapping="Wrap" AcceptsReturn="True" x:Name="txtInput">
-            <!--<i:Interaction.Behaviors>
+    <Border  Background="{StaticResource AccentColorBrush}"
+             BorderBrush="{StaticResource AccentColorBrush}"
+             BorderThickness="2"
+             CornerRadius="8,8,0,0">
+        <Border.Effect>
+            <DropShadowEffect Color="Gray" Opacity="0.5"/>
+        </Border.Effect>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Label HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold" Content="{Binding Path=AlgorithmName}" Foreground="White"/>
+            <DockPanel Grid.Row="1" Margin="3" LastChildFill="True">
+                <TextBlock Text="Размер блока: " VerticalAlignment="Center" Foreground="White"/>
+                <ComboBox IsReadOnly="True" SelectedIndex="1" x:Name="cmbSize">
+                    <ComboBoxItem>256</ComboBoxItem>
+                    <ComboBoxItem>512</ComboBoxItem>
+                    <ComboBoxItem>1024</ComboBoxItem>
+                </ComboBox>
+            </DockPanel>
+            <TextBox Grid.Row="2" Width="200" TextWrapping="Wrap" AcceptsReturn="True" x:Name="txtInput">
+                <!--<i:Interaction.Behaviors>
                 <b:PropertyChangedCommandBehavior DependencyPropertyName="Text" PropertyChangedCommand="{Binding MessageChanged}" />
             </i:Interaction.Behaviors>-->
-        </TextBox>
-    </Grid>
+            </TextBox>
+        </Grid>
+    </Border>
 </UserControl>

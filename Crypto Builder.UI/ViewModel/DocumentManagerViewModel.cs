@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using CryptoBuilder.UI.Helper;
+using Xceed.Wpf.AvalonDock.Layout;
 
 namespace CryptoBuilder.UI.ViewModel
 {
@@ -21,6 +22,10 @@ namespace CryptoBuilder.UI.ViewModel
 
         public ObservableCollection<object> Anchorables { get; private set; } = new ObservableCollection<object>();
 
+        public LayoutAnchorable LayoutAnchorableAlgorithm { get; set; }
+
+        public LayoutAnchorable LayoutAnchorableOutput { get; set; }
+
         public DockWindowViewModel ActiveDockWindow
         {
             get { return _activeDockWindow; }
@@ -29,9 +34,45 @@ namespace CryptoBuilder.UI.ViewModel
                 if (_activeDockWindow != value)
                 {
                     _activeDockWindow = value;
-
+                    
                     OnPropertyChanged(nameof(ActiveDockWindow));
                 }
+            }
+        }
+
+        private ICommand _panelOutput;
+
+        public ICommand PanelOutput
+        {
+            get
+            {
+                if (_panelOutput == null)
+                    _panelOutput = new RelayCommand(action =>
+                    {
+                        LayoutAnchorableOutput.Show();
+
+                        LayoutAnchorableOutput.IsActive = true;
+                    }, canExecute => LayoutAnchorableOutput != null);
+
+                return _panelOutput;
+            }
+        }
+
+        private ICommand _panelAlgorithm;
+
+        public ICommand PanelAlgorithm
+        {
+            get
+            {
+                if (_panelAlgorithm == null)
+                    _panelAlgorithm = new RelayCommand(action => 
+                    {
+                        LayoutAnchorableAlgorithm.Show();
+
+                        LayoutAnchorableAlgorithm.IsActive = true;
+                    }, canExecute => LayoutAnchorableAlgorithm != null);
+
+                return _panelAlgorithm;
             }
         }
 
@@ -60,6 +101,8 @@ namespace CryptoBuilder.UI.ViewModel
             }
         }
 
+
+
         public DocumentManagerViewModel(IEnumerable<DockWindowViewModel> dockWindowViewModels)
         {
             foreach (var document in dockWindowViewModels)
@@ -86,7 +129,7 @@ namespace CryptoBuilder.UI.ViewModel
 
         public void CreateNewDocument()
         {
-            DockWindowViewModel dockWindowViewModel = new ProjectDocumentViewModel() { Title = "Документ " + documents++ };
+            var dockWindowViewModel = new ProjectDocumentViewModel() { Title = "Документ " + documents++ };
 
             CreateNewDocument(dockWindowViewModel);
         }
@@ -103,7 +146,7 @@ namespace CryptoBuilder.UI.ViewModel
         {
             if (ActiveDockWindow != null)
             {
-                ProjectDocumentViewModel project = ActiveDockWindow as ProjectDocumentViewModel;
+                var project = ActiveDockWindow as ProjectDocumentViewModel;
 
                 foreach (var item in project.Algorithms)
                     item.Compute();
@@ -115,7 +158,7 @@ namespace CryptoBuilder.UI.ViewModel
         {
             if (ActiveDockWindow != null)
             {
-                ProjectDocumentViewModel project = ActiveDockWindow as ProjectDocumentViewModel;
+                var project = ActiveDockWindow as ProjectDocumentViewModel;
 
                 return project.Algorithms.Count != 0;
             }
