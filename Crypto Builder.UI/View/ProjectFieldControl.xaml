@@ -44,6 +44,9 @@
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter Property="Panel.ZIndex" Value="1" />
                         </Trigger>
+                        <Trigger Property="IsKeyboardFocusWithin" Value="True">
+                            <Setter Property="IsSelected" Value="true" />
+                        </Trigger>
                     </Style.Triggers>
                 </Style>
             </ListBox.ItemContainerStyle>
