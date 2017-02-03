@@ -33,13 +33,8 @@
             <Setter Property="Width" Value="10"/>
         </Style>
     </Window.Resources>
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <Menu Grid.Row="0" Padding="5">
+    <DockPanel>
+        <Menu DockPanel.Dock="Top" Padding="5">
             <MenuItem Header="Файл">
                 <MenuItem Header="Создать">
                     <MenuItem Header="Новый файл" Command="{Binding Path=NewProject}"  InputGestureText="Ctrl+N">
@@ -68,7 +63,7 @@
                 </MenuItem>
             </MenuItem>
         </Menu>
-        <ToolBar Grid.Row="1">
+        <ToolBar DockPanel.Dock="Top">
             <Button Command="{Binding Path=RunProject}">
                 <StackPanel Orientation="Horizontal">
                     <fa:ImageAwesome Icon="Play" Style="{StaticResource ResourceKey=ToolBarImageAwesomeStyle}"/>
@@ -76,7 +71,7 @@
                 </StackPanel>
             </Button>
         </ToolBar>
-        <xcad:DockingManager Grid.Row="2" AllowMixedOrientation="True" DataContext="{Binding Source={x:Static local:App.DockManagerViewModel}}" DocumentsSource="{Binding Documents}" ActiveContent="{Binding ActiveDockWindow, Mode=TwoWay}">
+        <xcad:DockingManager DockPanel.Dock="Top" AllowMixedOrientation="True" DataContext="{Binding Source={x:Static local:App.DockManagerViewModel}}" DocumentsSource="{Binding Documents}" ActiveContent="{Binding ActiveDockWindow, Mode=TwoWay}">
             <xcad:DockingManager.Theme>
                 <xcad:MetroTheme/>
             </xcad:DockingManager.Theme>
@@ -113,5 +108,5 @@
                 </xcad:LayoutRoot.BottomSide>
             </xcad:LayoutRoot>
         </xcad:DockingManager>
-    </Grid>
+    </DockPanel>
 </MahApps:MetroWindow>

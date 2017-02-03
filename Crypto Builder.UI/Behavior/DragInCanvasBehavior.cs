@@ -82,8 +82,8 @@ namespace CryptoBuilder.UI.Behavior
         {
             if (canvas == null)
                 canvas = FrameworkElementExtension.FindParent<Canvas>(AssociatedObject);
-            
-            if(lbi == null)
+
+            if (lbi == null)
                 lbi = FrameworkElementExtension.FindParent<ListBoxItem>(AssociatedObject);
 
             IsDragging = true;
