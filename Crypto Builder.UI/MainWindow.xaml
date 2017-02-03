@@ -56,7 +56,7 @@
                 </MenuItem>
             </MenuItem>
             <MenuItem Header="Вид">
-                <MenuItem Header="Панель алгоритмов" Click="MenuItem_Click"/>
+                <MenuItem Header="Панель алгоритмов"/>
             </MenuItem>
         </Menu>
         <ToolBar Grid.Row="1">
@@ -87,7 +87,7 @@
                 <xcad:LayoutRoot.LeftSide>
                     <xcad:LayoutAnchorSide>
                         <xcad:LayoutAnchorGroup>
-                            <xcad:LayoutAnchorable x:Name="layoutAnchorableAlgorithm" Title="Панель алгоритмов" CanClose="False" CanHide="True" Hiding="layoutAnchorableAlgorithm_Hiding">
+                            <xcad:LayoutAnchorable x:Name="layoutAnchorableAlgorithm" Title="Панель алгоритмов" CanClose="False" CanHide="True">
                                 <v:AlgorithmPanelControl/>
                             </xcad:LayoutAnchorable>
                         </xcad:LayoutAnchorGroup>
