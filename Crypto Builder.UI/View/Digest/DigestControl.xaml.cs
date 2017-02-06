@@ -108,7 +108,7 @@ namespace CryptoBuilder.UI.View
 
             _digest = digest;
 
-            DataContext = _digest;
+            DataContext = (IAlgorithmElement)this;
         }
 
         public byte[] Compute()

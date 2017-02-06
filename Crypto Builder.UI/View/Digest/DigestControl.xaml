@@ -19,7 +19,9 @@
                 <Setter Property="BorderThickness" Value="2"/>
                 <Setter Property="CornerRadius" Value="8,8,0,0"/>
                 <Style.Triggers>
-                    <DataTrigger></DataTrigger>
+                    <DataTrigger Binding="{Binding Path=IsSelected}" Value="True">
+                        <Setter Property="BorderBrush" Value="Red"/>
+                    </DataTrigger>
                 </Style.Triggers>
             </Style>
         </Border.Style>
