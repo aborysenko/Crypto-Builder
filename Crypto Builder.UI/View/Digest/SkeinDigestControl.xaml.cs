@@ -80,6 +80,19 @@ namespace CryptoBuilder.UI.View.Digest
             }
         }
 
+        public bool IsSelected
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected virtual void OnPropertyChanged(string propertyName)

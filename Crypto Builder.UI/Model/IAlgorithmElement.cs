@@ -12,6 +12,7 @@ namespace CryptoBuilder.UI.Model
 {
     public interface IAlgorithmElement
     {
+        bool IsSelected { get; set; }
         double X { get; set; }
 
         double Y { get; set; }

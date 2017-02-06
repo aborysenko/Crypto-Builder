@@ -18,6 +18,7 @@
     <Window.InputBindings>
         <KeyBinding Key="N" Modifiers="Ctrl" Command="{Binding Path=NewProject}"/>
         <KeyBinding Key="R" Modifiers="Ctrl" Command="{Binding Path=RunProject}"/>
+        <KeyBinding Key="D" Modifiers="Ctrl" Command="{Binding Path=DeleteProjectElements}"/>
     </Window.InputBindings>
     <Window.Resources>
         <Style x:Key="MenuItemFontAwesomeStyle" TargetType="fa:FontAwesome">
@@ -29,7 +30,6 @@
         <Style x:Key="ToolBarImageAwesomeStyle" TargetType="fa:ImageAwesome">
             <Setter Property="HorizontalAlignment" Value="Center"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
-            <Setter Property="Foreground" Value="Green"/>
             <Setter Property="Width" Value="10"/>
         </Style>
     </Window.Resources>
@@ -64,10 +64,16 @@
             </MenuItem>
         </Menu>
         <ToolBar DockPanel.Dock="Top">
-            <Button Command="{Binding Path=RunProject}">
+            <Button Command="{Binding Path=RunProject}" ToolTip="Ctrl + R">
                 <StackPanel Orientation="Horizontal">
-                    <fa:ImageAwesome Icon="Play" Style="{StaticResource ResourceKey=ToolBarImageAwesomeStyle}"/>
+                    <fa:ImageAwesome Icon="Play" Style="{StaticResource ResourceKey=ToolBarImageAwesomeStyle}" Foreground="Green"/>
                     <Label Content="Пуск" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                </StackPanel>
+            </Button>
+            <Button Command="{Binding Path=DeleteProjectElements}" ToolTip="Ctrl + D">
+                <StackPanel Orientation="Horizontal">
+                    <fa:ImageAwesome Icon="TrashOutline" Style="{StaticResource ResourceKey=ToolBarImageAwesomeStyle}" Foreground="Red"/>
+                    <Label Content="Удалить элементы" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
                 </StackPanel>
             </Button>
         </ToolBar>

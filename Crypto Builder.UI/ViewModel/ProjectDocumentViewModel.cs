@@ -74,19 +74,21 @@ namespace CryptoBuilder.UI.ViewModel
 
         private void AlgorithmDrop(object inObject)
         {
-            DropData dropData = inObject as DropData;
+            var dropData = inObject as DropData;
 
-            if (dropData == null) return;
+            if (dropData != null)
+            {
+                var algorithm = dropData.Data.GetData(typeof(IAlgorithmElement)) as IAlgorithmElement;
 
-            IAlgorithmElement algorithm = dropData.Data.GetData(typeof(IAlgorithmElement)) as IAlgorithmElement;
+                if (algorithm != null)
+                {
+                    algorithm.X = dropData.Position.X;
 
-            if (algorithm == null) return;
+                    algorithm.Y = dropData.Position.Y;
 
-            algorithm.X = dropData.Position.X;
-
-            algorithm.Y = dropData.Position.Y;
-
-            AlgorithmElement(algorithm);
+                    AlgorithmElement(algorithm);
+                }
+            }
         }
     }
 }

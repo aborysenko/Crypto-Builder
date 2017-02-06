@@ -101,7 +101,18 @@ namespace CryptoBuilder.UI.ViewModel
             }
         }
 
+        private ICommand _deleteProjectElements;
 
+        public ICommand DeleteProjectElements
+        {
+            get
+            {
+                if (_deleteProjectElements == null)
+                    _deleteProjectElements = new RelayCommand(action => DeleteProjectElementsExecute(), canExecute => CanDeleteProjectElementsExecute());
+
+                return _deleteProjectElements;
+            }
+        }
 
         public DocumentManagerViewModel(IEnumerable<DockWindowViewModel> dockWindowViewModels)
         {
@@ -161,6 +172,28 @@ namespace CryptoBuilder.UI.ViewModel
                 var project = ActiveDockWindow as ProjectDocumentViewModel;
 
                 return project.Algorithms.Count != 0;
+            }
+
+            return false;
+        }
+
+        private void DeleteProjectElementsExecute()
+        {
+            var project = ActiveDockWindow as ProjectDocumentViewModel;
+
+            project.DeleteSelectedAlgorithmElement();
+        }
+
+        private bool CanDeleteProjectElementsExecute()
+        {
+            if (ActiveDockWindow != null)
+            {
+                var project = ActiveDockWindow as ProjectDocumentViewModel;
+
+                if (project != null)
+                {
+                    return project.SelectedElement != null;
+                }
             }
 
             return false;

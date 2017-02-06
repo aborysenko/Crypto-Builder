@@ -86,6 +86,8 @@ namespace CryptoBuilder.UI.Behavior
             if (lbi == null)
                 lbi = FrameworkElementExtension.FindParent<ListBoxItem>(AssociatedObject);
 
+            lbi.IsSelected = true;
+
             IsDragging = true;
 
             mouseOffset = e.GetPosition(AssociatedObject);
