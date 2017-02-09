@@ -11,20 +11,7 @@
     <i:Interaction.Behaviors>
         <b:DragInCanvasBehavior />
     </i:Interaction.Behaviors>
-    <Border>
-        <Border.Style>
-            <Style TargetType="Border">
-                <Setter Property="Background" Value="{StaticResource AccentColorBrush}"/>
-                <Setter Property="BorderBrush" Value="{StaticResource AccentColorBrush}"/>
-                <Setter Property="BorderThickness" Value="2"/>
-                <Setter Property="CornerRadius" Value="8,8,0,0"/>
-                <Style.Triggers>
-                    <DataTrigger Binding="{Binding Path=IsSelected}" Value="True">
-                        <Setter Property="BorderBrush" Value="Red"/>
-                    </DataTrigger>
-                </Style.Triggers>
-            </Style>
-        </Border.Style>
+    <Border Style="{StaticResource ElementBorderStyle}">
         <Border.Effect>
             <DropShadowEffect Color="Gray" Opacity="0.5"/>
         </Border.Effect>

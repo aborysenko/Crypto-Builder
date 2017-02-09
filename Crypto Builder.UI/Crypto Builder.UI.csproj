@@ -116,7 +116,6 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Behavior\DragInCanvasBehavior.cs" />
-    <Compile Include="Behavior\DragInListboxBehavior.cs" />
     <Compile Include="Behavior\DropBehavior.cs" />
     <Compile Include="Behavior\PropertyChangedCommandBehavior.cs" />
     <Compile Include="Helper\ByteToStringConverter.cs" />

@@ -17,7 +17,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <ListBox Grid.Row="1" ItemsSource="{Binding Path=Algorithms}" SelectedItem="{Binding Path=SelectedElement, Mode=TwoWay}" SelectionMode="Extended" b:DropBehavior.PreviewDropCommand="{Binding AlgorithmDropCommand}">
+        <ListBox Grid.Row="1" ItemsSource="{Binding Path=Algorithms}" SelectedItem="{Binding Path=SelectedElement, Mode=TwoWay}" SelectionMode="Single" b:DropBehavior.PreviewDropCommand="{Binding AlgorithmDropCommand}">
             <ListBox.Background>
                 <VisualBrush TileMode="Tile"
                              Viewport="0,0,25,25" ViewportUnits="Absolute" 

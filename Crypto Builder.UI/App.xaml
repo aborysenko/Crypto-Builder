@@ -8,6 +8,17 @@
     <Application.Resources>
         <ResourceDictionary>
             <helper:ByteToStringConverter x:Key="ByteToStringConverter" />
+            <Style x:Key="ElementBorderStyle" TargetType="Border">
+                <Setter Property="Background" Value="{StaticResource AccentColorBrush}"/>
+                <Setter Property="BorderBrush" Value="{StaticResource AccentColorBrush}"/>
+                <Setter Property="BorderThickness" Value="2"/>
+                <Setter Property="CornerRadius" Value="8,8,0,0"/>
+                <Style.Triggers>
+                    <DataTrigger Binding="{Binding Path=IsSelected}" Value="True">
+                        <Setter Property="BorderBrush" Value="Orange"/>
+                    </DataTrigger>
+                </Style.Triggers>
+            </Style>
             <ResourceDictionary.MergedDictionaries>
                 <!-- MahApps.Metro resource dictionaries. Make sure that all file names are Case Sensitive! -->
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.xaml" />

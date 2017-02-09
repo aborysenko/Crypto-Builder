@@ -11,10 +11,7 @@
     <i:Interaction.Behaviors>
         <b:DragInCanvasBehavior />
     </i:Interaction.Behaviors>
-    <Border  Background="{StaticResource AccentColorBrush}"
-             BorderBrush="{StaticResource AccentColorBrush}"
-             BorderThickness="2"
-             CornerRadius="8,8,0,0">
+    <Border Style="{StaticResource ElementBorderStyle}">
         <Border.Effect>
             <DropShadowEffect Color="Gray" Opacity="0.5"/>
         </Border.Effect>

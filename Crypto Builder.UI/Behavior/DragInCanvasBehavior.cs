@@ -19,13 +19,7 @@ namespace CryptoBuilder.UI.Behavior
 
         private ListBoxItem lbi = null;
 
-        private ListBox listBox = null;
-
         private bool IsDragging = false;
-
-        private bool IsMouseDown = false;
-
-        private bool IsMouseAndControlDown = false;
 
         private Point mouseOffset;
 
@@ -53,49 +47,27 @@ namespace CryptoBuilder.UI.Behavior
 
         private void AssociatedObject_MouseMove(object sender, System.Windows.Input.MouseEventArgs e)
         {
-            //if (IsDragging)
-            //{
-            //    IAlgorithmElement element = AssociatedObject as IAlgorithmElement;
-
-            //    var point = e.GetPosition(canvas) - mouseOffset;
-
-            //    if (0 < point.X && point.X < (canvas.ActualWidth - lbi.ActualWidth))
-            //        element.X = point.X;
-
-            //    if (0 < point.Y && point.Y < (canvas.ActualHeight - lbi.ActualHeight))
-            //        element.Y = point.Y;
-
-            //    canvas.Resize();
-
-            //    AssociatedObject.BringIntoView();
-
-            //    e.Handled = true;
-            //}
-
             if (IsDragging)
             {
-                var currentMouse = e.GetPosition(canvas);
+                IAlgorithmElement element = AssociatedObject as IAlgorithmElement;
 
-                var point = currentMouse - mouseOffset;
+                var point = e.GetPosition(canvas) - mouseOffset;
 
-                mouseOffset = currentMouse;
+                //if (0 < point.X && point.X < (canvas.ActualWidth - lbi.ActualWidth))
+                //    element.X = point.X;
 
-                foreach (IAlgorithmElement element in listBox.SelectedItems)
-                {
-                    element.X += point.X;
+                //if (0 < point.Y && point.Y < (canvas.ActualHeight - lbi.ActualHeight))
+                //    element.Y = point.Y;
 
-                    element.Y += point.Y;
-                }
+                if(0 < point.X)
+                    element.X = point.X;
 
-                //canvas.Resize();
+                if(0 < point.Y)
+                    element.Y = point.Y;
 
-                //AssociatedObject.BringIntoView();
+                canvas.Resize();
 
-               
-            }
-            else if (IsMouseDown)
-            {
-                IsDragging = true;
+                AssociatedObject.BringIntoView();
 
                 e.Handled = true;
             }
@@ -103,85 +75,29 @@ namespace CryptoBuilder.UI.Behavior
 
         private void AssociatedObject_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            if (IsMouseDown)
+            if (IsDragging)
             {
-                if (!IsDragging)
-                {
-                    if (IsMouseAndControlDown)
-                    {
-                        if (listBox.SelectedItems.Contains(AssociatedObject))
-                        {
-                            listBox.SelectedItems.Remove(AssociatedObject);
-                        }
-                        else
-                        {
-                            listBox.SelectedItems.Add(AssociatedObject);
-                        }
-                    }
-                    else
-                    {
-                        if (!(listBox.SelectedItems.Count == 1 && listBox.SelectedItem == AssociatedObject))
-                        {
-                            listBox.SelectedItems.Clear();
-
-                            listBox.SelectedItems.Add(AssociatedObject);
-                        }
-                    }
-                }
-
                 AssociatedObject.ReleaseMouseCapture();
 
-                IsMouseAndControlDown = false;
-
-                IsMouseDown = false;
+                IsDragging = false;
 
                 e.Handled = true;
             }
-
-            IsDragging = false;
         }
 
         private void AssociatedObject_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        {
-            if(listBox == null)
-                listBox = FrameworkElementExtension.FindParent<ListBox>(AssociatedObject);
-
+        { 
             if (canvas == null)
                 canvas = FrameworkElementExtension.FindParent<Canvas>(AssociatedObject);
 
             if (lbi == null)
                 lbi = FrameworkElementExtension.FindParent<ListBoxItem>(AssociatedObject);
 
-            IsMouseDown = true;
+            lbi.IsSelected = true;
 
-            IsMouseAndControlDown = (Keyboard.Modifiers & ModifierKeys.Control) != 0;
+            IsDragging = true;
 
-            if (!IsMouseAndControlDown)
-            {
-                if (listBox.SelectedItems.Count == 0)
-                {
-                    listBox.SelectedItems.Add(AssociatedObject);
-                }
-                else if (listBox.SelectedItems.Contains(AssociatedObject))
-                {
-                    
-                }
-                else
-                {
-                    listBox.SelectedItems.Clear();
-
-                    listBox.SelectedItems.Add(AssociatedObject);
-                }
-            }
-            else
-            {
-                if (!listBox.SelectedItems.Contains(AssociatedObject))
-                {
-                    listBox.SelectedItems.Add(AssociatedObject);
-                }
-            }
-
-            mouseOffset = e.GetPosition(canvas);
+            mouseOffset = e.GetPosition(AssociatedObject);
 
             AssociatedObject.CaptureMouse();
 
