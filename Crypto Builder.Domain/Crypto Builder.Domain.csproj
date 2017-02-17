@@ -796,6 +796,7 @@
     <Compile Include="crypto\macs\GMac.cs" />
     <Compile Include="crypto\macs\GOST28147Mac.cs" />
     <Compile Include="crypto\macs\HMac.cs" />
+    <Compile Include="crypto\macs\HMACFactory.cs" />
     <Compile Include="crypto\macs\ISO9797Alg3Mac.cs" />
     <Compile Include="crypto\macs\Poly1305.cs" />
     <Compile Include="crypto\macs\SipHash.cs" />

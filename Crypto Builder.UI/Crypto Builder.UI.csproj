@@ -132,6 +132,7 @@
     <Compile Include="ViewModel\DigestAlgorithmViewModel.cs" />
     <Compile Include="ViewModel\DockWindowViewModel.cs" />
     <Compile Include="ViewModel\DocumentManagerViewModel.cs" />
+    <Compile Include="ViewModel\HMACAlgorithmViewModel.cs" />
     <Compile Include="ViewModel\ProjectDocumentViewModel.cs" />
     <Compile Include="View\AlgorithmPanelControl.xaml.cs">
       <DependentUpon>AlgorithmPanelControl.xaml</DependentUpon>
@@ -141,6 +142,9 @@
     </Compile>
     <Compile Include="View\Digest\SkeinDigestControl.xaml.cs">
       <DependentUpon>SkeinDigestControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\HMAC\HMACControl.xaml.cs">
+      <DependentUpon>HMACControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\OutputControl.xaml.cs">
       <DependentUpon>OutputControl.xaml</DependentUpon>
@@ -169,6 +173,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Digest\SkeinDigestControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\HMAC\HMACControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

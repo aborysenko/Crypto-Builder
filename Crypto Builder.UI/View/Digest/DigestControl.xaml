@@ -8,9 +8,9 @@
              xmlns:b="clr-namespace:CryptoBuilder.UI.Behavior"
              mc:Ignorable="d" 
              Cursor="Hand">
-    <i:Interaction.Behaviors>
+    <!--<i:Interaction.Behaviors>
         <b:DragInCanvasBehavior />
-    </i:Interaction.Behaviors>
+    </i:Interaction.Behaviors>-->
     <Border Style="{StaticResource ElementBorderStyle}">
         <Border.Effect>
             <DropShadowEffect Color="Gray" Opacity="0.5"/>

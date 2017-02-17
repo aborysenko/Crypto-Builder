@@ -27,7 +27,7 @@
         <DockPanel Grid.Row="0" Margin="5,5,5,0">
             <Button DockPanel.Dock="Right" Background="White" Command="{Binding Path=SearchCommand}">
                 <Button.Content>
-                    <fa:FontAwesome Icon="{Binding Path=SearchIcon}" FontSize="15"/>
+                    <fa:FontAwesome Icon="{Binding Path=SearchIcon}"/>
                 </Button.Content>
             </Button>
             <TextBox Text="{Binding Path=Search, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
@@ -36,6 +36,7 @@
             <TreeView.ItemContainerStyle>
                 <Style TargetType="TreeViewItem">
                     <Setter Property="IsSelected" Value="{Binding IsSelected, Mode=TwoWay}"/>
+                    <Setter Property="IsExpanded" Value="True"/>
                 </Style>
             </TreeView.ItemContainerStyle>
         </TreeView>

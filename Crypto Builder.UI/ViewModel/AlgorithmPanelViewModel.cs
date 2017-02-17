@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using CryptoBuilder.Crypto.Digests;
 using CryptoBuilder.UI.View;
+using CryptoBuilder.crypto.macs;
 
 namespace CryptoBuilder.UI.ViewModel
 {
@@ -88,7 +89,14 @@ namespace CryptoBuilder.UI.ViewModel
         {
             SearchIcon = "Search";
 
+            CreateAlgorithms();
+        }
+
+        private void CreateAlgorithms()
+        {
             CreateDigest();
+
+            CreateHMAC();
         }
 
         private void CreateDigest()
@@ -105,11 +113,25 @@ namespace CryptoBuilder.UI.ViewModel
                 AlgorithmTypeViewModels.Add(AlgorithmTypeViewModel);
         }
 
+        private void CreateHMAC()
+        {
+            AlgorithmTypeViewModel AlgorithmTypeViewModel = new AlgorithmTypeViewModel() { TypeName = "HMAC функции" };
+
+            foreach (var item in HMACFactory.Hmacs.Keys)
+            {
+                if (item.ToLower().Contains(Search.ToLower()))
+                    AlgorithmTypeViewModel.Algoriths.Add(new HMACAlgorithmViewModel(item));
+            }
+
+            if (AlgorithmTypeViewModel.Algoriths.Count != 0)
+                AlgorithmTypeViewModels.Add(AlgorithmTypeViewModel);
+        }
+
         private void SearchAlgorithms()
         {
            AlgorithmTypeViewModels.Clear();
 
-           CreateDigest();
+            CreateAlgorithms();
         }
 
         private void ClearFilter()
